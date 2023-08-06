@@ -34,8 +34,8 @@ spec:
           - "$(CONNECTION)"
         securityContext:
           runAsNonRoot: true
-      - name: frontend
-        image: python-guestbook-frontend-django
+      - name: guestbook-django-app
+        image: guestbook-django-app
         ports:
         - name: http-server
           containerPort: 8080
