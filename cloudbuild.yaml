@@ -39,7 +39,7 @@ steps:
         # Create Cloud Deploy release with new images
         gcloud deploy releases create release-${SHORT_SHA} \
           --region $_REGION \
-          --delivery-pipeline=guestbook-app-delivery \
+          --delivery-pipeline=guestbook-django-app-delivery \
           --images=guestbook-django-app=${_APP_IMAGE}@$app_sha
 
 images:
