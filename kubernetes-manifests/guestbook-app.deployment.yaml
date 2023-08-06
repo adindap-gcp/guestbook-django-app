@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: python-guestbook-frontend
-  namespace: demo
   labels:
     app: python-guestbook
     tier: frontend
