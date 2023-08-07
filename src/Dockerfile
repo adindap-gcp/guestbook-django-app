@@ -16,5 +16,7 @@ RUN pip install debugpy
 # Copy the rest of the working directory contents into the container at /app
 COPY . .
 
+EXPOSE 8080
+
 # Start the server when the container launches
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8080", "--noreload"]
