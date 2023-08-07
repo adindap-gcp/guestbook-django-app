@@ -57,7 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'guestbook.urls'
 
-CSRF_TRUSTED_ORIGINS = ['https://*.cloudworkstations.dev', 'https://*.gcp-demo.pro']
+CSRF_TRUSTED_ORIGINS = ['https://*.cloudworkstations.dev', 'http://*', '*']
 
 TEMPLATES = [
     {
