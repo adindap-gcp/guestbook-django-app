@@ -40,13 +40,13 @@ steps:
         gcloud deploy releases create release-${SHORT_SHA} \
           --region $_REGION \
           --delivery-pipeline=guestbook-django-app-delivery \
-          --images=guestbook-django-app=${_APP_IMAGE}@$app_sha
+          --images=python-guestbook-frontend-django=${_APP_IMAGE}@$app_sha
 
 images:
   - $_APP_IMAGE:$SHORT_SHA
 
 substitutions:
-  _APP_IMAGE: 'asia-southeast1-docker.pkg.dev/${PROJECT_ID}/demo/guestbook-django-app'
+  _APP_IMAGE: 'asia-southeast1-docker.pkg.dev/${PROJECT_ID}/demo/python-guestbook-frontend-django'
   _REGION: asia-southeast1
 
 options:

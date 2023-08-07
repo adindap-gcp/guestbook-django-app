@@ -19,23 +19,8 @@ spec:
     spec:
       serviceAccountName: sql-proxy-sa
       containers:
-      - name: cloud-sql-proxy
-        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.6.0
-        env:
-        - name: CONNECTION
-          valueFrom:
-            secretKeyRef:
-              name: guestbook-db-creds
-              key: connection
-        args:
-          - "--private-ip"
-          - "--structured-logs"
-          - "--port=5432"
-          - "$(CONNECTION)"
-        securityContext:
-          runAsNonRoot: true
-      - name: guestbook-django-app
-        image: guestbook-django-app
+      - name: frontend
+        image: python-guestbook-frontend-django
         ports:
         - name: http-server
           containerPort: 8080
@@ -59,3 +44,18 @@ spec:
           value: "5432"
         - name: DATABASE_HOST
           value: "127.0.0.1"
+      - name: cloud-sql-proxy
+        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.6.0
+        env:
+        - name: CONNECTION
+          valueFrom:
+            secretKeyRef:
+              name: guestbook-db-creds
+              key: connection
+        args:
+          - "--private-ip"
+          - "--structured-logs"
+          - "--port=5432"
+          - "$(CONNECTION)"
+        securityContext:
+          runAsNonRoot: true
